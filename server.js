@@ -7,13 +7,32 @@ const server = http.createServer((req, res) => {
 
   //   res.setHeader("Content-Type", "text/html");
   //   res.statusCode = 404;
-  console.log(req.url);
-  console.log(req.method);
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end("<h1>Assalamu'alaikum</h1>"); // res.end can be used to pass a message
+  // console.log(req.url);
+  // console.log(req.method);
+
+  // Route only GET
+  try {
+    // Check if GET request
+    if (req.method === "GET") {
+      // Create a router
+      if (req.url === "/") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end("<h1>Home Page - Assalamu'alaikum</h1>"); // res.end can be used to pass a message
+      } else if (req.url === "/about") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end("<h1>About Page - Assalamu'alaikum Warahmatullah</h1>"); // res.end can be used to pass a message
+      } else {
+        res.writeHead(404, { "Content-Type": "text/html" });
+        res.end("<h1>Page Not Found</h1>"); // res.end can be used to pass a message
+      }
+    } else {
+      throw new Error("Method not allowed");
+    }
+  } catch (error) {
+    res.writeHead(505, { "Content-Type": "text/plain" });
+    res.end("Server Error"); // res.end can be used to pass a message
+  }
 });
-
-
 
 server.listen(PORT, () => {
   console.log(`Server running on  port ${PORT}`);
