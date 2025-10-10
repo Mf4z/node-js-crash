@@ -8,7 +8,7 @@ function celciusToFahrenheit(celcius) {
 
 // Export file using common js
 // For exporting just one
-module.exports = generateRandomNumber;
+// module.exports = generateRandomNumber;
 
 // For exporting multiple
 module.exports = {

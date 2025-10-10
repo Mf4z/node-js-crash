@@ -1,6 +1,17 @@
 import http from "http";
+import fs from "fs/promises"; // Using the promise version
+import url from "url";
+import path from "path";
 
+// Get current path in __filename, __dirname (using common js - the ones that use Require)
+
+//
 const PORT = process.env.PORT;
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// console.log(__filename); // Check filename
+// console.log(__dirname); // Check dirname
 
 const server = http.createServer((req, res) => {
   //   res.write("Assalamu'alaikum");
@@ -15,6 +26,7 @@ const server = http.createServer((req, res) => {
     // Check if GET request
     if (req.method === "GET") {
       // Create a router
+      let filePath;
       if (req.url === "/") {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end("<h1>Home Page - Assalamu'alaikum</h1>"); // res.end can be used to pass a message
