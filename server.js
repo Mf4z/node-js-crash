@@ -14,13 +14,6 @@ const __dirname = path.dirname(__filename);
 // console.log(__dirname); // Check dirname
 
 const server = http.createServer(async (req, res) => {
-  //   res.write("Assalamu'alaikum");
-
-  //   res.setHeader("Content-Type", "text/html");
-  //   res.statusCode = 404;
-  // console.log(req.url);
-  // console.log(req.method);
-
   // Route only GET
   try {
     // Check if GET request
@@ -30,16 +23,10 @@ const server = http.createServer(async (req, res) => {
       let filePath; // file path for pages
 
       if (req.url === "/") {
-        // res.writeHead(200, { "Content-Type": "text/html" });
-        // res.end("<h1>Home Page - Assalamu'alaikum</h1>"); // res.end can be used to pass a message
         filePath = path.join(__dirname, "public", "index.html");
       } else if (req.url === "/about") {
-        // res.writeHead(200, { "Content-Type": "text/html" });
-        // res.end("<h1>About Page - Assalamu'alaikum Warahmatullah</h1>"); // res.end can be used to pass a message
         filePath = path.join(__dirname, "public", "about.html");
       } else {
-        // res.writeHead(404, { "Content-Type": "text/html" });
-        // res.end("<h1>Page Not Found</h1>"); // res.end can be used to pass a message
         throw new Error("Not found");
       }
 
