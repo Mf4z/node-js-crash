@@ -26,4 +26,25 @@ const readFile = async () => {
   }
 };
 
+// writeFile() - async/await
+const writeFile = async () => {
+  try {
+    await fs.writeFile("./test.txt", "Hello this is from the writeFile");
+    console.log("File written to");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// appendFile() - async/await
+const appendFile = async () => {
+  try {
+    await fs.appendFile("./test.txt", "\nThis was appended");
+    console.log("File appended...");
+  } catch (error) {
+    console.log(error);
+  }
+};
+writeFile();
+appendFile();
 readFile();

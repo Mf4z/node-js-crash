@@ -1,1 +1,2 @@
-Assalamu'alaikum, this is a text test file 
+Hello this is from the writeFile
+This was appended
